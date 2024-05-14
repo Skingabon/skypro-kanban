@@ -1,21 +1,29 @@
-import NoStatusColumn from "../Column/NoStatus/NoStatusColumn.jsx";
-import NeedWorkColumn from "../Column/NeedWork/NeedWorkColumn.jsx";
-import InWorkColumn from "../Column/InWork/InWorkColumn.jsx";
-import TestColumn from "../Column/Testing/TestColumn.jsx";
-import DoneColumn from "../Column/Done/DoneColumn.jsx";
+import Column from "../Column/Column.jsx";
 
-const Main = () => {
+const statusList = [
+    "Без статуса",
+    "Нужно сделать",
+    "В работе",
+    "Тестирование",
+    "Готово",
+];
+
+
+const Main = ( {cards} ) => {
     return (
         <main className="main">
             <div className="container">
 
                 <div className="main__block">
                     <div className="main__content">
-                        <NoStatusColumn titleProps="Без статуса" />
-                        <NeedWorkColumn titleProps="Нужно сделать" />
-                        <InWorkColumn titleProps="В работе" />
-                        <TestColumn titleProps="Тестирование" />
-                        <DoneColumn titleProps="Готово" />
+                        {statusList.map((status) => (
+                            <Column
+                                key={status}
+                                titleProps={status}
+                                cardList={cards.filter((card) => card.status === status)}
+                            />
+                        ))}
+
                     </div>
                 </div>
             </div>
