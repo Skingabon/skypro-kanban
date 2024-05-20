@@ -1,3 +1,6 @@
+
+import * as S from "./card.styled.js";
+
 const Card = ({ card }) => {
 const {topic, title, date} = card;
     const colorList = {
@@ -6,28 +9,30 @@ const {topic, title, date} = card;
         Copywriting: "_purple",
     }
 
-    const colorClass = colorList[topic] || "";
+     const colorClass = colorList[topic] || "";
 
     return (
-        <div className="cards__item">
-            <div className="cards__card card">
-                <div className="card__group">
-                    <div className={`card__theme ${colorClass}`}>
-                        <p className={colorClass}>{topic}</p>
-                    </div>
+
+        <S.CardsItem>
+            {/*<div className="cards__card card">*/}
+            <S.CardsCard>
+                <S.CardGroup>
+                    <S.CardTopic $topicColor={colorClass} >
+                        <S.TopicText>{topic}</S.TopicText>
+                    </S.CardTopic>
                     <a href="" target="_self">
-                        <div className="card__btn">
+                        <S.CardBtn>
                             <div></div>
                             <div></div>
                             <div></div>
-                        </div>
+                        </S.CardBtn>
                     </a>
-                </div>
-                <div className="card__content">
+                </S.CardGroup>
+                <S.CardContent>
                     <a href="" target="_blank">
-                        <h3 className="card__title">{title}</h3>
+                        <S.CardTitle>{title}</S.CardTitle>
                     </a>
-                    <div className="card__date">
+                    <S.CardDate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13"
                              fill="none">
                             <g clipPath="url(#clip0_1_415)">
@@ -45,10 +50,11 @@ const {topic, title, date} = card;
                             </defs>
                         </svg>
                         <p>{date}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </S.CardDate>
+                </S.CardContent>
+            </S.CardsCard>
+        </S.CardsItem>
+
     );
 }
 

@@ -1,14 +1,15 @@
 import Card from "../Card/Card.jsx";
+import {CardsInCards, ColumnTitle, MainColumn} from "./column.js"
 
 
 
 const Column = ({titleProps, cardList}) => {
     return (
-        <div className="main__column column">
-            <div className="column__title">
+        <MainColumn>
+            <ColumnTitle>
                 <p>{titleProps}</p>
-            </div>
-            <div className="cards">
+            </ColumnTitle>
+            <CardsInCards>
                 {cardList.map((card) => (
                     <Card
                         key={card.id}
@@ -17,8 +18,8 @@ const Column = ({titleProps, cardList}) => {
                 ))}
 
 
-            </div>
-        </div>
+            </CardsInCards>
+        </MainColumn>
     );
 }
 export default Column;

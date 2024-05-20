@@ -5,7 +5,9 @@ import PopNewCard from "./components/Popup/PopNewCard/PopNewCard.jsx";
 import PopBrowse from "./components/Popup/PopBrowse/PopBrowse.jsx";
 import Header from "./components/Header/Header.jsx";
 import Main from "./components/Main/Main.jsx";
-import {cardList} from "../data.js";
+import {cardList} from "./data.js";
+import {GlobalStyled} from "./global.styled.js";
+import {Loader, Wrapper} from "./app.styled.js";
 function App() {
     const [cards, setCards] =useState(cardList)
     const [isLoading, setIsLoading] = useState(true)
@@ -27,7 +29,9 @@ function App() {
     }, [])
 
     return (
-      <div className="wrapper">
+        <>
+            <GlobalStyled />
+      <Wrapper>
 
 <PopExit/>
 
@@ -38,10 +42,11 @@ function App() {
 
 <Header onCardAdd={onCardAdd} />
 
-          {!isLoading ? <Main cards={cards} /> : "«Данные загружаются»"}
+          {!isLoading ? <Main cards={cards} /> :<Loader>Данные загружаются</Loader>}
 
 
-      </div>
+      </Wrapper>
+        </>
   );
   
 }
