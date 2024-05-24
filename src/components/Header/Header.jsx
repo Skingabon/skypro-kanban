@@ -1,6 +1,8 @@
 
 import React, {useState} from "react";
 import PopUser from "../Popup/PopUser/PopUser.jsx";
+import {Container} from "../shared.styled.js";
+import * as S from "./header.styled.js";
 
 const Header = ({ onCardAdd }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,24 +12,25 @@ const Header = ({ onCardAdd }) => {
     }
 
     return (
-        <header className="header">
-            <div className="container">
-                <div className="header__block">
-                    <div className="header__logo _show _light">
+        <S.Header>
+            <Container>
+                <S.HeaderBlock>
+                    <S.HeaderLogo>
                         <a href="" target="_self"><img src="/images/logo.png" alt="logo"/></a>
-                    </div>
-                    <div className="header__logo _dark">
+                    </S.HeaderLogo>
+                    <S.HeaderLogo>
                         <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo"/></a>
-                    </div>
-                    <nav className="header__nav">
-                        <button className="header__btn-main-new _hover01" id="btnMainNew" onClick={onCardAdd}><a>Создать новую
-                            задачу</a></button>
+                    </S.HeaderLogo>
+                    <S.HeaderNav>
+                        <S.HeaderBtnMainNew onClick={onCardAdd}>
+                            <a>Создать новую задачу</a>
+                        </S.HeaderBtnMainNew>
                         <a href="" onClick={toggleDropDown} className="header__user _hover02">Ivan Ivanov</a>
                         {isOpen && <PopUser />}
-                    </nav>
-                </div>
-            </div>
-        </header>
+                    </S.HeaderNav>
+                </S.HeaderBlock>
+            </Container>
+        </S.Header>
     );
 }
 
