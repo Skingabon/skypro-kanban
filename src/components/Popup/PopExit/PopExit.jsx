@@ -1,31 +1,28 @@
 import { Link } from "react-router-dom";
-import { PopExitContainer } from "./popExit.styled.js";
+import * as S from "./popExit.styled.js";
+import { routes } from "../../../AppRoutes/routing.js";
 
 const PopExit = ({ logout }) => {
   return (
-    <PopExit id="popExit">
-      <PopExitContainer>
-        <div className="pop-exit__block">
-          <div className="pop-exit__ttl">
+    <S.PopExit>
+      <S.PopExitContainer>
+        <S.PopExitBlock>
+          <S.PopExitTtl>
             <h2>Выйти из аккаунта?</h2>
-          </div>
-          <form className="pop-exit__form" id="formExit" action="#">
-            <div className="pop-exit__form-group">
-              <button
-                className="pop-exit__exit-yes _hover01"
-                id="exitYes"
-                onClick={logout}
-              >
+          </S.PopExitTtl>
+          <form id="formExit" action="#">
+            <S.PopExitFormGroup>
+              <S.PopExitFormYes id="exitYes" onClick={logout}>
                 Выйти
-              </button>
-              <button className="pop-exit__exit-no _hover03" id="exitNo">
-                <Link to="/">Нет, остаться</Link>
-              </button>
-            </div>
+              </S.PopExitFormYes>
+              <S.PopExitNo>
+                <Link to={routes.MAIN}>Нет, остаться</Link>
+              </S.PopExitNo>
+            </S.PopExitFormGroup>
           </form>
-        </div>
-      </PopExitContainer>
-    </PopExit>
+        </S.PopExitBlock>
+      </S.PopExitContainer>
+    </S.PopExit>
   );
 };
 

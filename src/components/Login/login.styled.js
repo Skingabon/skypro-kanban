@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { Link } from "react-router-dom";
 
 export const ContainerSign = styled.div`
   display: block;
@@ -54,6 +55,17 @@ export const ModalInput = styled.input`
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   outline: none;
   padding: 10px 8px;
+  &:first-child {
+    margin-bottom: 7px;
+  }
+  &::placeholder {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.28px;
+    color: #94a6be;
+  }
 `;
 export const ModalBtnEnter = styled.button`
   width: 100%;
@@ -72,4 +84,34 @@ export const ModalBtnEnter = styled.button`
   font-weight: 500;
   letter-spacing: -0.14px;
   color: #ffffff;
+`;
+
+export const ModalLink = styled.span`
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ModalFormGroup = styled.div`
+  text-align: center;
+`;
+
+export const StyleModalFormGroupP = css`
+  color: rgba(148, 166, 190, 0.4);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.14px;
+`;
+
+export const ModalFormGroupP = styled.p`
+  ${StyleModalFormGroupP}
+`;
+
+export const ModalFormGroupA = styled(Link)`
+  ${StyleModalFormGroupP};
+  text-decoration: underline;
 `;

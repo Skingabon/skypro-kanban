@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { cardList } from "../../data.js";
 import { GlobalStyled } from "../../global.styled.js";
 import { Loader, Wrapper } from "../../app.styled.js";
-import PopExit from "../../components/Popup/PopExit/PopExit.jsx";
 import PopNewCard from "../../components/Popup/PopNewCard/PopNewCard.jsx";
 import Header from "../../components/Header/Header.jsx";
 import Main from "../../components/Main/Main.jsx";
@@ -22,18 +21,18 @@ export const MainPage = () => {
     setCards([...cards, newTask]);
   }
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 1000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
 
   return (
     <>
       <GlobalStyled />
       <Wrapper>
         <Outlet />
-        <PopExit />
+
         <PopNewCard />
         <Header onCardAdd={onCardAdd} />
         {!isLoading ? (

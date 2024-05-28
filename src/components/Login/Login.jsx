@@ -3,11 +3,15 @@ import {
   Modal,
   ModalBlock,
   ModalBtnEnter,
+  ModalFormGroup,
+  ModalFormGroupA,
+  ModalFormGroupP,
   ModalFormLogin,
   ModalInput,
+  ModalLink,
   ModalTtlH2,
 } from "./login.styled.js";
-import { Link } from "react-router-dom";
+import { routes } from "../../AppRoutes/routing.js";
 
 const Login = ({ login }) => {
   return (
@@ -32,12 +36,14 @@ const Login = ({ login }) => {
                 placeholder="Пароль"
               />
               <ModalBtnEnter id="btnEnter" type="submit">
-                Войти
+                <ModalLink>Войти</ModalLink>
               </ModalBtnEnter>
-              <div className="modal__form-group">
-                <p>Нужно зарегистрироваться?</p>
-                <Link to="/">Регистрируйтесь здесь</Link>
-              </div>
+              <ModalFormGroup>
+                <ModalFormGroupP>Нужно зарегистрироваться?</ModalFormGroupP>
+                <ModalFormGroupA to={routes.REGISTER}>
+                  Регистрируйтесь здесь
+                </ModalFormGroupA>
+              </ModalFormGroup>
             </ModalFormLogin>
           </ModalBlock>
         </Modal>

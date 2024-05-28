@@ -28,8 +28,6 @@ export const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route path={routes.LOGIN} element={<LoginPage loginProps={login} />} />
-      <Route path={routes.REGISTER} element={<RegistrPage />} />
       <Route element={<ProtectedRoute isAuth={isAuth} />}>
         <Route path={routes.MAIN} element={<MainPage />}>
           <Route path={routes.CARD} element={<PopBrowse />} />
@@ -37,6 +35,8 @@ export const AppRoutes = () => {
           <Route path={routes.NEW} element={<NewCardPage />} />
         </Route>
       </Route>
+      <Route path={routes.LOGIN} element={<LoginPage loginProps={login} />} />
+      <Route path={routes.REGISTER} element={<RegistrPage />} />
       <Route path={routes.NOTFOUND} element={<NotFoundPage />} />
     </Routes>
   );
