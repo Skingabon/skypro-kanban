@@ -9,7 +9,7 @@ export const RegistrPage = () => {
       <S.Modal>
         <S.ModalBlock>
           <S.ModalTtlH2>
-            <h2>Регистрация</h2>
+            <h2>Регистрация.</h2>
           </S.ModalTtlH2>
           <S.ModalFormLogin id="formLogUp" action="#">
             <S.ModalInput
