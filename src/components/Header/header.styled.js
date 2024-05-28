@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import {Hover01} from "../shared.styled.js";
+import { Hover01 } from "../shared.styled.js";
 
 export const HeaderLogo = styled.div`
   img {
     width: 85px;
   }
-    `;
+`;
 
 export const HeaderNav = styled.nav`
   max-width: 290px;
@@ -13,27 +13,26 @@ export const HeaderNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-    `;
+`;
 
 export const HeaderBtnMainNew = styled.button`
   width: 178px;
   height: 30px;
   border-radius: 4px;
-  background-color: #565EEF;
-  color: #FFFFFF;
+  background-color: #565eef;
+  color: #ffffff;
   border: none;
   font-size: 14px;
   line-height: 1;
   font-weight: 500;
   margin-right: 20px;
   ${Hover01}
-   `;
-
+`;
 
 export const Header = styled.header`
   width: 100%;
   margin: 0 auto;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 `;
 
 export const HeaderBlock = styled.div`
@@ -45,6 +44,5 @@ export const HeaderBlock = styled.div`
   position: relative;
   top: 0;
   left: 0;
-  padding: 0 10px; 
+  padding: 0 10px;
 `;
-
