@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import PopUser from "../Popup/PopUser/PopUser.jsx";
 import { Container } from "../shared.styled.js";
 import * as S from "./header.styled.js";
+import { Link } from "react-router-dom";
+import { routes } from "../../AppRoutes/routing.js";
 
 const Header = ({ onCardAdd }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,9 +17,9 @@ const Header = ({ onCardAdd }) => {
       <Container>
         <S.HeaderBlock>
           <S.HeaderLogo>
-            <a href="" target="_self">
+            <Link to={routes.MAIN} target="_self">
               <img src="/images/logo.png" alt="logo" />
-            </a>
+            </Link>
           </S.HeaderLogo>
           <S.HeaderLogo>
             <a href="" target="_self">
