@@ -6,10 +6,23 @@ import PopNewCard from "../../components/Popup/PopNewCard/PopNewCard.jsx";
 import Header from "../../components/Header/Header.jsx";
 import Main from "../../components/Main/Main.jsx";
 import { Outlet } from "react-router-dom";
+import { getTasks } from "../../Api/tasks.js";
 
-export const MainPage = () => {
+export const MainPage = ({ setAuth, setUser, user }) => {
   const [cards, setCards] = useState(cardList);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [tasks, setTasks] = useState(null);
+  useEffect(() => {
+    setIsLoading(true);
+
+    getTasks().then((data) => {
+      setTasks(data);
+    });
+    setIsLoading(false);
+  }, []);
+  console.log(tasks);
+
   function onCardAdd() {
     const newTask = {
       id: cards.length + 1,
@@ -21,12 +34,6 @@ export const MainPage = () => {
     setCards([...cards, newTask]);
   }
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-  }, []);
-
   return (
     <>
       <GlobalStyled />
@@ -36,7 +43,7 @@ export const MainPage = () => {
         <PopNewCard />
         <Header onCardAdd={onCardAdd} />
         {!isLoading ? (
-          <Main cards={cards} />
+          <Main tasks={tasks} cards={cards} />
         ) : (
           <Loader>Данные загружаются</Loader>
         )}

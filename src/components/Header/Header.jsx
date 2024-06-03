@@ -37,7 +37,7 @@ const Header = ({ onCardAdd }) => {
             >
               Ivan Ivanov
             </a>
-            {isOpen && <PopUser />}
+            {isOpen && <PopUser />}-
           </S.HeaderNav>
         </S.HeaderBlock>
       </Container>

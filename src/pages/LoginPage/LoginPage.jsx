@@ -1,6 +1,5 @@
-import React from "react";
 import Login from "../../components/Login/Login.jsx";
 
-export const LoginPage = ({ loginProps }) => {
-  return <Login login={loginProps} />;
+export const LoginPage = ({ loginProps, setUser, setAuth }) => {
+  return <Login setUser={setUser} setAuth={setAuth} login={loginProps} />;
 };
