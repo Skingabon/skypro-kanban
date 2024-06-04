@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { routes } from "../../../AppRoutes/routing.js";
 import * as S from "./popUser.styled.js";
 
-const PopUser = () => {
+const PopUser = ({ user }) => {
   return (
     <S.HeaderPopUserSet>
-      <S.SetUserSetName>Ivan Ivanov</S.SetUserSetName>
-      <S.SetUserMail>ivan.ivanov@gmail.com</S.SetUserMail>
+      <S.SetUserSetName>{user.name}</S.SetUserSetName>
+      <S.SetUserMail>{user.login}</S.SetUserMail>
       <S.PopUserSetTheme>
         <p>Темная тема</p>
         <input type="checkbox" className="checkbox" name="checkbox" />

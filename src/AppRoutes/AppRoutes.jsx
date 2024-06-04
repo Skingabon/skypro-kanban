@@ -11,29 +11,37 @@ import { NewCardPage } from "../pages/NewCardPage/NewCardPage.jsx";
 import ProtectedRoute from "./ProtectedRoutes.jsx";
 import { useNavigate } from "react-router-dom";
 
+const getLocalStorage = () => {
+  try {
+    return JSON.parse(localStorage.getItem("user"));
+  } catch (_) {
+    return null;
+  }
+};
+
 export const AppRoutes = () => {
-  const [user, setUser] = useState(localStorage.getItem("token"));
-  const [isAuth, setAuth] = useState(false);
+  const [user, setUser] = useState(getLocalStorage());
   const navigate = useNavigate();
 
-  // const login = (event) => {
-  //   event.preventDefault();
-  //   setAuth(true);
-  //   navigate(routes.MAIN);
-  // };
+  const loginUser = (user) => {
+    setUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
+    navigate(routes.MAIN);
+  };
 
   const logout = (event) => {
     event.preventDefault();
-    setAuth(false);
+    localStorage.removeItem("user");
+    setUser(null);
     navigate(routes.LOGIN);
   };
 
   return (
     <Routes>
-      <Route element={<ProtectedRoute isAuth={isAuth} />}>
+      <Route element={<ProtectedRoute user={user} />}>
         <Route
           path={routes.MAIN}
-          element={<MainPage setAuth={setAuth} user={user} setUser={setUser} />}
+          element={<MainPage user={user} setUser={setUser} />}
         >
           <Route path={routes.CARD} element={<PopBrowse />} />
           <Route path={routes.EXIT} element={<ExitPage logout={logout} />} />
@@ -42,7 +50,7 @@ export const AppRoutes = () => {
       </Route>
       <Route
         path={routes.LOGIN}
-        element={<LoginPage setUser={setUser} setAuth={setAuth} />}
+        element={<LoginPage loginUser={loginUser} />}
       />
       <Route path={routes.REGISTER} element={<RegistrPage />} />
       <Route path={routes.NOTFOUND} element={<NotFoundPage />} />

@@ -16,7 +16,7 @@ import { useState } from "react";
 import { loginApi } from "../../Api/tasks.js";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setAuth, setUser }) => {
+const Login = ({ loginUser }) => {
   const navigate = useNavigate();
   const [loginForm, setLoginForm] = useState({
     email: "",
@@ -46,8 +46,7 @@ const Login = ({ setAuth, setUser }) => {
         password: loginForm.password,
       });
       console.log("LOGIN RESPONSE", response);
-      setAuth(true);
-      setUser(response.user);
+      loginUser(response.user);
       navigate(routes.MAIN);
     } catch (error) {
       console.error(error.message);
@@ -68,7 +67,7 @@ const Login = ({ setAuth, setUser }) => {
             <ModalFormLogin id="formLogIn" action="#" onSubmit={onLogin}>
               <ModalInput
                 type="text"
-                name="login"
+                name="email"
                 id="formlogin"
                 placeholder="Эл. почта"
                 value={loginForm.email}

@@ -1,16 +1,20 @@
-const token = "ksdfsksdfjfsdjk";
-const url = "https://wedev-api.sky.pro";
-export function getTasks() {
+const url = "https://wedev-api.sky.pro/api";
+export function getTasks({ token }) {
   const response = fetch(url + "/kanban", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-  return response.then((data) => data.json());
+  return response.then((data) => {
+    if (!data.ok) {
+      throw new Error("Не удалось загрузить данные, попробуйте позже");
+    }
+    return data.json();
+  });
 }
 
 export function loginApi({ login, password }) {
-  return fetch(url + "/login", {
+  return fetch(url + "/user/login", {
     method: "POST",
     body: JSON.stringify({
       login,

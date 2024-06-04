@@ -5,7 +5,7 @@ import * as S from "./header.styled.js";
 import { Link } from "react-router-dom";
 import { routes } from "../../AppRoutes/routing.js";
 
-const Header = ({ onCardAdd }) => {
+const Header = ({ onCardAdd, user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropDown = (event) => {
     event.preventDefault();
@@ -35,9 +35,9 @@ const Header = ({ onCardAdd }) => {
               onClick={toggleDropDown}
               className="header__user _hover02"
             >
-              Ivan Ivanov
+              {user.name}
             </a>
-            {isOpen && <PopUser />}-
+            {isOpen && <PopUser user={user} />}-
           </S.HeaderNav>
         </S.HeaderBlock>
       </Container>

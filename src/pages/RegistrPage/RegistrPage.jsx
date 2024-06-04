@@ -20,7 +20,7 @@ export const RegistrPage = () => {
             />
             <S.ModalInput
               type="text"
-              name="login"
+              name="email"
               id="loginReg"
               placeholder="Эл. почта"
             />
