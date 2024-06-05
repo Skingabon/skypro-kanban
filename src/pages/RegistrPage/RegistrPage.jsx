@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./registrPage.styled.js";
 import { routes } from "../../AppRoutes/routing.js";
 import { Link } from "react-router-dom";
-
+// на основе логина
 export const RegistrPage = () => {
   return (
     <S.ContainerSignup>
