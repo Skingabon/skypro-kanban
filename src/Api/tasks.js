@@ -34,16 +34,22 @@ export function loginApi({ login, password }) {
 }
 
 export function registerApi({ login, name, password }) {
-  return fetch(url, {
+  return fetch(url + "/user", {
     method: "POST",
     body: JSON.stringify({
-      login,
       name,
+      login,
       password,
     }),
   }).then((response) => {
     if (response.status === 400) {
       throw new Error("Такой пользователь уже существует");
+    }
+    if (response.status === 500) {
+      throw new Error("Сервер не доступен");
+    }
+    if (response.status !== 201) {
+      throw new Error("Что-то пошло не так");
     }
     return response.json();
   });

@@ -29,6 +29,12 @@ export const AppRoutes = () => {
     navigate(routes.MAIN);
   };
 
+  const regUser = (user) => {
+    setUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
+    navigate(routes.MAIN);
+  };
+
   const logout = (event) => {
     event.preventDefault();
     localStorage.removeItem("user");
@@ -52,7 +58,10 @@ export const AppRoutes = () => {
         path={routes.LOGIN}
         element={<LoginPage loginUser={loginUser} />}
       />
-      <Route path={routes.REGISTER} element={<RegistrPage />} />
+      <Route
+        path={routes.REGISTER}
+        element={<RegistrPage regUser={regUser} />}
+      />
       <Route path={routes.NOTFOUND} element={<NotFoundPage />} />
     </Routes>
   );

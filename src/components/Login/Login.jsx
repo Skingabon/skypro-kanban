@@ -22,7 +22,7 @@ const Login = ({ loginUser }) => {
     email: "",
     password: "",
   });
-  const [error, serError] = useState(null);
+  const [error, setError] = useState(null);
 
   const inputLoginChange = (event) => {
     const { name, value } = event.target;
@@ -33,11 +33,11 @@ const Login = ({ loginUser }) => {
     event.preventDefault();
 
     if (!loginForm.email) {
-      serError("Укажите почту");
+      setError("Укажите почту");
       return;
     }
     if (!loginForm.password) {
-      serError("Укажите пароль");
+      setError("Укажите пароль");
       return;
     }
     try {
@@ -49,9 +49,9 @@ const Login = ({ loginUser }) => {
       loginUser(response.user);
       navigate(routes.MAIN);
     } catch (error) {
-      console.error(error.message);
+      setError(error.message);
       if (error.message === "Failed to fetch") {
-        serError("Ошибка соединения");
+        setError("Ошибка соединения");
       }
     }
   };
