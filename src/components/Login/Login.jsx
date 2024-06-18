@@ -12,12 +12,12 @@ import {
   ModalTtlH2,
 } from "./login.styled.js";
 import { routes } from "../../AppRoutes/routing.js";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { loginApi } from "../../Api/tasks.js";
-import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/user.jsx";
 
-const Login = ({ loginUser }) => {
-  const navigate = useNavigate();
+const Login = () => {
+  const { login } = useContext(UserContext);
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
@@ -46,8 +46,7 @@ const Login = ({ loginUser }) => {
         password: loginForm.password,
       });
       console.log("LOGIN RESPONSE", response);
-      loginUser(response.user);
-      navigate(routes.MAIN);
+      login(response.user);
     } catch (error) {
       setError(error.message);
       if (error.message === "Failed to fetch") {

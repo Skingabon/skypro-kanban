@@ -54,3 +54,24 @@ export function registerApi({ login, name, password }) {
     return response.json();
   });
 }
+
+export function addCard({ token, task }) {
+  return fetch(url + "/kanban", {
+    method: "POST",
+    body: JSON.stringify(task),
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    if (response.status === 400) {
+      throw new Error("Неверный логин или пароль");
+    }
+    if (response.status === 500) {
+      throw new Error("Ошибка сервера");
+    }
+    return response.json();
+  });
+}

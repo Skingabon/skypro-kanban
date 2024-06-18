@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import * as S from "./registrPage.styled.js";
 import { routes } from "../../AppRoutes/routing.js";
-import { Link, useNavigate } from "react-router-dom";
-import { registerApi } from "../../Api/tasks.js";
+import { loginApi, registerApi } from "../../Api/tasks.js";
+import { UserContext } from "../../context/user.jsx";
 // на основе логина
-export const RegistrPage = ({ regUser }) => {
-  const navigate = useNavigate();
+export const RegistrPage = () => {
+  const { login } = useContext(UserContext);
   const [regForm, setregForm] = useState({
     name: "",
     email: "",
@@ -40,8 +40,11 @@ export const RegistrPage = ({ regUser }) => {
         password: regForm.password,
       });
       console.log("LOGIN RESPONSE", response);
-      regUser(response.user);
-      navigate(routes.MAIN);
+      const loginResp = await loginApi({
+        login: regForm.email,
+        password: regForm.password,
+      });
+      login(loginResp.user);
     } catch (error) {
       console.error(error.message);
       if (error.message === "Failed to fetch") {
