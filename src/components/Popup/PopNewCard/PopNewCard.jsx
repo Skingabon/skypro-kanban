@@ -37,7 +37,7 @@ const PopNewCard = () => {
         setCards(res.tasks);
         navigate(routes.MAIN);
       })
-      .catch((err) => {
+      .catch(() => {
         setError("Что-то пошло не так, попробуйте позже");
       });
   }
