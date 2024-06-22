@@ -14,10 +14,10 @@ const PopNewCard = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState(new Date());
   const [error, setError] = useState(null);
-  const [topic, setTopic] = useState(null);
+  // const [topic, setTopic] = useState(null);
   const [task, setTask] = useState({
     title: "",
-    topic: "Research",
+    topic: "",
     status: "Без статуса",
     description: "",
   });
@@ -27,7 +27,7 @@ const PopNewCard = () => {
       ...task,
       selected,
     };
-    if (!task.title || !task.description || !selected) {
+    if (!task.title || !task.description || !selected || !task.topic) {
       setError("Заполните все поля");
       return;
     }
@@ -36,6 +36,7 @@ const PopNewCard = () => {
       .then((res) => {
         setCards(res.tasks);
         navigate(routes.MAIN);
+        console.log(res.tasks);
       })
       .catch(() => {
         setError("Что-то пошло не так, попробуйте позже");
@@ -95,8 +96,8 @@ const PopNewCard = () => {
                 {category.map((el, i) => (
                   <div key={i}>
                     <S.CategorysTheme
-                      $isActive={el.name === topic}
-                      onClick={() => setTopic(el.name)}
+                      $isActive={el.name === task.topic}
+                      onClick={() => setTask({ ...task, topic: el.name })}
                       $topicColor={el.color}
                       htmlFor={`radio${i}`}
                     >
