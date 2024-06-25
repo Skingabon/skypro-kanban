@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Hover01 } from "../shared.styled.js";
+import { Link } from "react-router-dom";
 
 export const HeaderLogo = styled.div`
   img {
@@ -15,7 +16,10 @@ export const HeaderNav = styled.nav`
   justify-content: center;
 `;
 
-export const HeaderBtnMainNew = styled.button`
+export const HeaderBtnMainNew = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 178px;
   height: 30px;
   border-radius: 4px;

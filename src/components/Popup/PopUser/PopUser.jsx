@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { routes } from "../../../AppRoutes/routing.js";
 import * as S from "./popUser.styled.js";
+import { UserContext } from "../../../context/user.jsx";
 
-const PopUser = ({ user }) => {
+const PopUser = () => {
+  const { user } = useContext(UserContext);
   return (
     <S.HeaderPopUserSet>
       <S.SetUserSetName>{user.name}</S.SetUserSetName>

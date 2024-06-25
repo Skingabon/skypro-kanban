@@ -5,7 +5,7 @@ import * as S from "./header.styled.js";
 import { Link } from "react-router-dom";
 import { routes } from "../../AppRoutes/routing.js";
 
-const Header = ({ onCardAdd, user }) => {
+const Header = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropDown = (event) => {
     event.preventDefault();
@@ -27,8 +27,8 @@ const Header = ({ onCardAdd, user }) => {
             </a>
           </S.HeaderLogo>
           <S.HeaderNav>
-            <S.HeaderBtnMainNew onClick={onCardAdd}>
-              <a>Создать новую задачу</a>
+            <S.HeaderBtnMainNew to={routes.NEW}>
+              Создать новую задачу
             </S.HeaderBtnMainNew>
             <a
               href=""
@@ -37,7 +37,7 @@ const Header = ({ onCardAdd, user }) => {
             >
               {user.name}
             </a>
-            {isOpen && <PopUser user={user} />}-
+            {isOpen && <PopUser />}
           </S.HeaderNav>
         </S.HeaderBlock>
       </Container>

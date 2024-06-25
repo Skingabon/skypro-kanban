@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { PopNewCardSubttl } from "./Popup/PopNewCard/popNewCard.styled.js";
 
 export const Container = styled.div`
   max-width: 1260px;
@@ -30,4 +31,20 @@ export const Hover02 = css`
       border-bottom-color: #33399b;
     }
   }
+`;
+
+export const SubTtl = css`
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+`;
+
+export const FormInput = css`
+  margin: 20px 0;
+`;
+
+export const ErrorText = styled.p`
+  color: red;
+  margin-top: 10px;
 `;

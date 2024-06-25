@@ -54,3 +54,49 @@ export function registerApi({ login, name, password }) {
     return response.json();
   });
 }
+
+export function addCard({ token, task }) {
+  return fetch(url + "/kanban", {
+    method: "POST",
+    body: JSON.stringify(task),
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    if (response.status === 400) {
+      throw new Error("Неверный логин или пароль");
+    }
+    if (response.status === 500) {
+      throw new Error("Ошибка сервера");
+    }
+    return response.json();
+  });
+}
+
+export function editCard({ token, task }) {
+  const { title, topic, status, description, date, _id } = task;
+  return fetch(url + `/kanban/${_id}`, {
+    method: "PUT",
+    body: JSON.stringify({ title, topic, status, description, date }),
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    if (response.status === 400) {
+      throw new Error("Неверный запрос");
+    }
+    if (response.status === 500) {
+      throw new Error("Ошибка сервера");
+    }
+    if (response.status === 401) {
+      throw new Error("Неверный токен");
+    }
+    return response.json();
+  });
+}
