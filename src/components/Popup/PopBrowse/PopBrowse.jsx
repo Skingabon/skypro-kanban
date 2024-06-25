@@ -1,7 +1,38 @@
 import { Link, useParams } from "react-router-dom";
+import { useContext, useState } from "react";
+import { TasksContext } from "../../../context/tasks.jsx";
+import * as S from "./popBrowse.styled.js";
 
 const PopBrowse = () => {
   const { id } = useParams();
+  const { cards } = useContext(TasksContext);
+  const [card, setCard] = useState({
+    title: "",
+    topic: "",
+    status: "Без статуса",
+    description: "",
+    date: new Date(),
+  });
+
+  const colorList = {
+    "Web design": "_orange",
+    Research: "_green",
+    Copywriting: "_purple",
+  };
+
+  // useEffect(() => {
+  //   const findCard = cards.find((el) => el._id === id);
+  //   // setCard(card.)
+  // }, []);
+
+  const findCard = cards.find((el) => el._id === id);
+  const statusList = [
+    "Без статуса",
+    "Нужно сделать",
+    "В работе",
+    "Тестирование",
+    "Готово",
+  ];
 
   return (
     <div className="pop-browse" id="popBrowse">
@@ -9,29 +40,25 @@ const PopBrowse = () => {
         <div className="pop-browse__block">
           <div className="pop-browse__content">
             <div className="pop-browse__top-block">
-              <h3 className="pop-browse__ttl">Название задачи {id}</h3>
-              <div className="categories__theme theme-top _orange _active-category">
-                <p className="_orange">Web Design</p>
-              </div>
+              <h3 className="pop-browse__ttl">{findCard.title}</h3>
+              <S.CardTopic $topicColor={colorList[findCard.topic] || ""}>
+                <p>{findCard.topic}</p>
+              </S.CardTopic>
             </div>
             <div className="pop-browse__status status">
               <p className="status__p subttl">Статус</p>
+
               <div className="status__themes">
-                <div className="status__theme _hide">
-                  <p>Без статуса</p>
-                </div>
-                <div className="status__theme _gray">
-                  <p className="_gray">Нужно сделать</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>В работе</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Тестирование</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Готово</p>
-                </div>
+                {statusList.map((status) => (
+                  <div
+                    key={status}
+                    className={`status__theme ${status === findCard.status ? "_gray" : "_hide"}`}
+                  >
+                    <p className={status === findCard.status ? "_gray" : ""}>
+                      {status}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="pop-browse__wrap">
@@ -50,7 +77,9 @@ const PopBrowse = () => {
                     id="textArea01"
                     readOnly
                     placeholder="Введите описание задачи..."
-                  ></textarea>
+                  >
+                    {findCard.description}
+                  </textarea>
                 </div>
               </form>
               {/*<Calendar />*/}
