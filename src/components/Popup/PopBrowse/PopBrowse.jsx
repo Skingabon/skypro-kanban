@@ -48,7 +48,6 @@ const PopBrowse = () => {
                         </S.PopBrowsTopBlock>
                         <S.PopBrowsStatus>
                             <S.StatusP>Статус</S.StatusP>
-
                             <S.StatusThemes>
                                 {
                                     card.readonly
