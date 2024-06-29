@@ -1,7 +1,7 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 import { topicStyles } from "../../../lib/topic.js";
 import { CategorysTheme } from "../PopNewCard/popNewCard.styled.js";
-import {Grey} from "../../shared.styled.js";
+import { Grey } from "../../shared.styled.js";
 
 export const CardTopic = styled(CategorysTheme)`
   opacity: 1;
@@ -20,7 +20,7 @@ export const PopBrowse = styled.div`
   top: 0;
   left: 0;
   z-index: 7;
-    `;
+`;
 
 export const PopBrowsContainer = styled.div`
   width: 100%;
@@ -32,7 +32,7 @@ export const PopBrowsContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
-    `;
+`;
 
 export const PopBrowsBlock = styled.div`
   display: block;
@@ -56,18 +56,18 @@ export const PopBrowsTopBlock = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 18px;
-    `;
+`;
 
 export const PopBrowsTtl = styled.h3`
   color: #000;
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
-    `;
+`;
 
 export const PopBrowsStatus = styled.div`
   margin-bottom: 11px;
-    `;
+`;
 
 export const StatusP = styled.p`
   /*  color: #000;*/
@@ -75,14 +75,14 @@ export const StatusP = styled.p`
   /*  font-weight: 600;*/
   /*  line-height: 1;*/
   margin-bottom: 14px;
-    `;
+`;
 
 export const StatusThemes = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
-    `;
+`;
 
 export const StatusTheme = styled.div`
   border-radius: 24px;
@@ -91,26 +91,33 @@ export const StatusTheme = styled.div`
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
-  
+
   ${Grey};
-  
-  ${(props) => props.$active ? css`opacity: 1;` : css`opacity: 0.4;`};
-    `;
+
+  ${(props) =>
+    props.$active
+      ? css`
+          opacity: 1;
+        `
+      : css`
+          opacity: 0.4;
+        `};
+`;
 
 export const PopBrowsWrap = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-    `;
+`;
 
 export const PopBrowsForm = styled.form`
   max-width: 370px;
   width: 100%;
   display: block;
   margin-bottom: 20px;
-    `;
+`;
 
 export const FormBrowsBlock = styled.div`
   display: flex;
   flex-direction: column;
-    `;
+`;

@@ -16,7 +16,6 @@ export const MainPage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    return setIsLoading(false);
     setIsLoading(true);
 
     getTasks({ token: user.token })
