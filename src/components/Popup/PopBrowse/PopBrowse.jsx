@@ -55,7 +55,7 @@ const PopBrowse = () => {
         setCard({ ...card, readonly: true });
       })
       .catch((error) => {
-        // TODO: сделать вывод ошибок пользователю
+        // TODO: сделать вывод ошибок пользователю/
         console.log(error.message);
       });
   };
