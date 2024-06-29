@@ -48,3 +48,8 @@ export const ErrorText = styled.p`
   color: red;
   margin-top: 10px;
 `;
+
+export const Grey = css`
+  background: #94a6be;
+  color: #ffffff;
+    `;
