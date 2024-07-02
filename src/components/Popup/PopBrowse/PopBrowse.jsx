@@ -1,10 +1,11 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { TasksContext } from "../../../context/tasks.jsx";
 import * as S from "./popBrowse.styled.js";
 import Calendar from "../../Calendar/Calendar.jsx";
-import { editCard } from "../../../Api/tasks.js";
+import { deleteCard, editCard } from "../../../Api/tasks.js";
 import { UserContext } from "../../../context/user.jsx";
+import { routes } from "../../../AppRoutes/routing.js";
 
 const PopBrowse = () => {
   const { id } = useParams();
@@ -18,6 +19,7 @@ const PopBrowse = () => {
     date: new Date(),
     readonly: true,
   });
+  const navigate = useNavigate();
 
   const colorList = {
     "Web design": "_orange",
@@ -55,8 +57,20 @@ const PopBrowse = () => {
         setCard({ ...card, readonly: true });
       })
       .catch((error) => {
-        // TODO: сделать вывод ошибок пользователю/
-        console.log(error.message);
+        // TODO: сделать вывод ошибок пользователю/!!!!!!!!!!!!!!
+        // console.log(error.message);
+      });
+  };
+
+  const onDeleteCard = () => {
+    deleteCard({ token: user.token, taskId: id })
+      .then((res) => {
+        setCards(res.tasks);
+        navigate(routes.MAIN);
+      })
+      .catch((error) => {
+        // TODO: сделать вывод ошибок пользователю/!!!!!!!!!!!!!!
+        // console.log(error.message);
       });
   };
 
@@ -122,7 +136,10 @@ const PopBrowse = () => {
                   >
                     <a href="#">Редактировать задачу</a>
                   </button>
-                  <button className="btn-browse__delete _btn-bor _hover03">
+                  <button
+                    className="btn-browse__delete _btn-bor _hover03"
+                    onClick={onDeleteCard}
+                  >
                     <a href="#">Удалить задачу</a>
                   </button>
                 </div>
@@ -148,6 +165,7 @@ const PopBrowse = () => {
                   <button
                     className="btn-edit__delete _btn-bor _hover03"
                     id="btnDelete"
+                    onClick={onDeleteCard}
                   >
                     <a href="#">Удалить задачу</a>
                   </button>
