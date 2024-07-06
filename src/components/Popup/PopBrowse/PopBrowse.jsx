@@ -6,6 +6,8 @@ import Calendar from "../../Calendar/Calendar.jsx";
 import { deleteCard, editCard } from "../../../Api/tasks.js";
 import { UserContext } from "../../../context/user.jsx";
 import { routes } from "../../../AppRoutes/routing.js";
+import { ErrorText } from "../../shared.styled.js";
+import { PopBrowseEditGroup } from "./popBrowse.styled.js";
 
 const PopBrowse = () => {
   const { id } = useParams();
@@ -20,6 +22,7 @@ const PopBrowse = () => {
     readonly: true,
   });
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
   const colorList = {
     "Web design": "_orange",
@@ -56,9 +59,8 @@ const PopBrowse = () => {
         setCards(res.tasks);
         setCard({ ...card, readonly: true });
       })
-      .catch((error) => {
-        // TODO: сделать вывод ошибок пользователю/!!!!!!!!!!!!!!
-        // console.log(error.message);
+      .catch(() => {
+        setError("Что-то пошло не так, попробуйте позже");
       });
   };
 
@@ -68,9 +70,8 @@ const PopBrowse = () => {
         setCards(res.tasks);
         navigate(routes.MAIN);
       })
-      .catch((error) => {
-        // TODO: сделать вывод ошибок пользователю/!!!!!!!!!!!!!!
-        // console.log(error.message);
+      .catch(() => {
+        setError("Что-то пошло не так, попробуйте позже");
       });
   };
 
@@ -127,53 +128,42 @@ const PopBrowse = () => {
 
               <Calendar selected={card.date} setSelected={onDateChange} />
             </S.PopBrowsWrap>
+            {error && <ErrorText>{error}</ErrorText>}
             {card.readonly ? (
-              <div className="pop-browse__btn-browse ">
-                <div className="btn-group">
-                  <button
-                    className="btn-browse__edit _btn-bor _hover03"
+              <S.PopBrowseBtn>
+                <S.BtnGroup>
+                  <S.PopBrowseBtnEdit
                     onClick={() => setCard({ ...card, readonly: false })}
                   >
                     <a href="#">Редактировать задачу</a>
-                  </button>
-                  <button
-                    className="btn-browse__delete _btn-bor _hover03"
-                    onClick={onDeleteCard}
-                  >
+                  </S.PopBrowseBtnEdit>
+                  <S.PopBrowseDelete onClick={onDeleteCard}>
                     <a href="#">Удалить задачу</a>
-                  </button>
-                </div>
-                <button className="btn-browse__close _btn-bg _hover01">
+                  </S.PopBrowseDelete>
+                </S.BtnGroup>
+                <S.PopBrowseClose>
                   <Link to="/">Закрыть</Link>
-                </button>
-              </div>
+                </S.PopBrowseClose>
+              </S.PopBrowseBtn>
             ) : (
-              <div className="pop-browse__btn-edit">
-                <div className="btn-group">
-                  <button
-                    className="btn-edit__edit _btn-bg _hover01"
-                    onClick={onSaveCard}
-                  >
+              <S.PopBrowseEditGroup>
+                <S.BtnGroup>
+                  <S.PopBrowseEdit01 onClick={onSaveCard}>
                     <a href="#">Сохранить</a>
-                  </button>
-                  <button
-                    className="btn-edit__edit _btn-bor _hover03"
+                  </S.PopBrowseEdit01>
+                  <S.PopBrowseEdit03
                     onClick={() => setCard({ ...card, readonly: true })}
                   >
                     <a href="#">Отменить</a>
-                  </button>
-                  <button
-                    className="btn-edit__delete _btn-bor _hover03"
-                    id="btnDelete"
-                    onClick={onDeleteCard}
-                  >
+                  </S.PopBrowseEdit03>
+                  <S.PopBrowseDelete onClick={onDeleteCard}>
                     <a href="#">Удалить задачу</a>
-                  </button>
-                </div>
-                <button className="btn-edit__close _btn-bg _hover01">
-                  <a href="#">Закрыть</a>
-                </button>
-              </div>
+                  </S.PopBrowseDelete>
+                </S.BtnGroup>
+                <S.PopBrowseClose>
+                  <Link to={routes.MAIN}>Закрыть</Link>
+                </S.PopBrowseClose>
+              </S.PopBrowseEditGroup>
             )}
           </S.PopBrowsContent>
         </S.PopBrowsBlock>

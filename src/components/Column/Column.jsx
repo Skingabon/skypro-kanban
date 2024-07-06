@@ -3,7 +3,6 @@ import { CardsInCards, ColumnTitle, MainColumn } from "./column.styled.js";
 import { Droppable } from "react-beautiful-dnd";
 
 const Column = ({ titleProps, cardList }) => {
-    console.log("test 1")
   return (
     <MainColumn>
       <ColumnTitle>

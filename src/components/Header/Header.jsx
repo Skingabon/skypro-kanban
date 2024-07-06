@@ -30,13 +30,9 @@ const Header = ({ user }) => {
             <S.HeaderBtnMainNew to={routes.NEW}>
               Создать новую задачу
             </S.HeaderBtnMainNew>
-            <a
-              href=""
-              onClick={toggleDropDown}
-              className="header__user _hover02"
-            >
+            <S.HeaderUser href="" onClick={toggleDropDown}>
               {user.name}
-            </a>
+            </S.HeaderUser>
             {isOpen && <PopUser />}
           </S.HeaderNav>
         </S.HeaderBlock>

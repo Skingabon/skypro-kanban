@@ -54,7 +54,7 @@ const PopNewCard = () => {
       <S.PopNewCardContainer>
         <S.PopNewCardBlock>
           <S.PopNewCardContent>
-            <h3 className="pop-new-card__ttl">Создание задачи</h3>
+            <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
             <S.CloseCard to={routes.MAIN}>&#10006;</S.CloseCard>
             <S.PopNewCardWrap>
               <S.PopNewCardForm id="formNewCard" action="#">
@@ -77,15 +77,12 @@ const PopNewCard = () => {
                   <S.PopNewCardSubttl htmlFor="textArea">
                     Описание задачи
                   </S.PopNewCardSubttl>
-                  <textarea
-                    className="form-new__area"
-                    name="text"
-                    id="textArea"
+                  <S.FormNewArea
                     placeholder="Введите описание задачи..."
                     onChange={(e) =>
                       setTask({ ...task, description: e.target.value })
                     }
-                  ></textarea>
+                  ></S.FormNewArea>
                 </S.FormNewBlock>
               </S.PopNewCardForm>
               <Calendar selected={selected} setSelected={setSelected} />
