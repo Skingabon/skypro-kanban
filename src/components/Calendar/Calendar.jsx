@@ -6,6 +6,10 @@ import { format } from "date-fns";
 const Calendar = ({ selected, setSelected }) => {
   // console.log(selected);
 
+  const formatDate = selected
+    ? format(selected, "dd.MM.yy.")
+    : "Дата не выбрана";
+
   return (
     <div className="pop-new-card__calendar calendar">
       <S.CalendarTtl>Даты</S.CalendarTtl>
@@ -22,8 +26,7 @@ const Calendar = ({ selected, setSelected }) => {
         <input type="hidden" id="datepick_value" value="08.09.2023" />
         <S.CalendarPeriod>
           <S.CalendarP>
-            Срок исполнения:{" "}
-            <S.CalendarSpan>{format(selected, "dd.MM.yy.")}</S.CalendarSpan>
+            Срок исполнения: <S.CalendarSpan>{formatDate}</S.CalendarSpan>
           </S.CalendarP>
         </S.CalendarPeriod>
       </S.CalendarBlock>

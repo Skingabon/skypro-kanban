@@ -84,6 +84,8 @@ export const CategorysTheme = styled.label`
   padding: 8px 20px;
   border-radius: 24px;
   margin-right: 7px;
+  font-size: 14px;
+  font-weight: 600;
   opacity: ${({ $isActive }) => ($isActive ? 1 : 0.4)};
   background-color: ${({ $topicColor }) =>
     topicStyles[$topicColor]?.backgroundColor || "#b4fdd1"};

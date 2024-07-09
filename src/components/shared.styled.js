@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { PopNewCardSubttl } from "./Popup/PopNewCard/popNewCard.styled.js";
 
 export const Container = styled.div`
   max-width: 1260px;

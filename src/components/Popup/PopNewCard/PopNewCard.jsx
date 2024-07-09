@@ -12,7 +12,7 @@ const PopNewCard = () => {
   const { user } = useContext(UserContext);
   const { setCards } = useContext(TasksContext);
   const navigate = useNavigate();
-  const [selected, setSelected] = useState(new Date());
+  const [selected, setSelected] = useState(null);
   const [error, setError] = useState(null);
   // const [topic, setTopic] = useState(null);
   const [task, setTask] = useState({

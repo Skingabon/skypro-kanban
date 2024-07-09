@@ -1,6 +1,9 @@
 import styled, { css } from "styled-components";
 import { topicStyles } from "../../../lib/topic.js";
-import { CategorysTheme } from "../PopNewCard/popNewCard.styled.js";
+import {
+  CategorysTheme,
+  FormNewArea,
+} from "../PopNewCard/popNewCard.styled.js";
 import { Grey, Hover01, Hover03 } from "../../shared.styled.js";
 
 export const CardTopic = styled(CategorysTheme)`
@@ -69,11 +72,10 @@ export const PopBrowsStatus = styled.div`
   margin-bottom: 11px;
 `;
 
-export const StatusP = styled.p`
-  /*  color: #000;*/
-  /*  font-size: 14px;*/
-  /*  font-weight: 600;*/
-  /*  line-height: 1;*/
+export const PopTitle = styled.p`
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
   margin-bottom: 14px;
 `;
 
@@ -187,4 +189,9 @@ export const PopBrowseEdit01 = styled.button`
 export const PopBrowseEdit03 = styled.button`
   ${BtnBor}
   ${Hover03}
+`;
+
+export const FormBrowseArea = styled(FormNewArea)`
+  background-color: ${({ $readOnly }) => ($readOnly ? "#EAEEF6" : "initial")};
+  color: ${({ $readOnly }) => ($readOnly ? "#94A6BE" : "initial")};
 `;

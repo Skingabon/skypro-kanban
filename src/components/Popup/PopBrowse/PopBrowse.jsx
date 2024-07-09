@@ -7,7 +7,6 @@ import { deleteCard, editCard } from "../../../Api/tasks.js";
 import { UserContext } from "../../../context/user.jsx";
 import { routes } from "../../../AppRoutes/routing.js";
 import { ErrorText } from "../../shared.styled.js";
-import { PopBrowseEditGroup } from "./popBrowse.styled.js";
 
 const PopBrowse = () => {
   const { id } = useParams();
@@ -25,7 +24,7 @@ const PopBrowse = () => {
   const [error, setError] = useState(null);
 
   const colorList = {
-    "Web design": "_orange",
+    "Web Design": "_orange",
     Research: "_green",
     Copywriting: "_purple",
   };
@@ -41,7 +40,7 @@ const PopBrowse = () => {
   useEffect(() => {
     const findCard = cards.find((el) => el._id === id);
     setCard({ ...findCard, readonly: true, date: new Date(findCard.date) });
-  }, []);
+  }, [id, cards]);
 
   const onDescriptionChange = (e) => {
     const description = e.target.value;
@@ -87,7 +86,7 @@ const PopBrowse = () => {
               </S.CardTopic>
             </S.PopBrowsTopBlock>
             <S.PopBrowsStatus>
-              <S.StatusP>Статус</S.StatusP>
+              <S.PopTitle>Статус</S.PopTitle>
               <S.StatusThemes>
                 {card.readonly ? (
                   <S.StatusTheme $active={true}>
@@ -111,18 +110,14 @@ const PopBrowse = () => {
             <S.PopBrowsWrap>
               <S.PopBrowsForm action="#">
                 <S.FormBrowsBlock>
-                  <label htmlFor="textArea01" className="subttl">
-                    Описание задачи
-                  </label>
-                  <textarea
-                    className="form-browse__area"
-                    name="text"
-                    id="textArea01"
+                  <S.PopTitle>Описание задачи</S.PopTitle>
+                  <S.FormBrowseArea
                     readOnly={card.readonly}
+                    $readOnly={card.readonly}
                     placeholder="Введите описание задачи..."
                     value={card.description}
                     onChange={onDescriptionChange}
-                  ></textarea>
+                  ></S.FormBrowseArea>
                 </S.FormBrowsBlock>
               </S.PopBrowsForm>
 

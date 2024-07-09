@@ -10,9 +10,7 @@ const PopExit = () => {
     <S.PopExit>
       <S.PopExitContainer>
         <S.PopExitBlock>
-          <S.PopExitTtl>
-            <h2>Выйти из аккаунта?</h2>
-          </S.PopExitTtl>
+          <S.PopExitTtl>Выйти из аккаунта?</S.PopExitTtl>
           <form id="formExit" action="#">
             <S.PopExitFormGroup>
               <S.PopExitFormYes id="exitYes" onClick={logout}>
