@@ -1,7 +1,7 @@
 import Column from "../Column/Column.jsx";
 import * as S from "./main.styled.js";
 import { Container } from "../shared.styled.js";
-import { DragDropContext } from "react-beautiful-dnd";
+import { DragDropContext } from "@hello-pangea/dnd";
 import { useContext } from "react";
 import { TasksContext } from "../../context/tasks.jsx";
 import { UserContext } from "../../context/user.jsx";

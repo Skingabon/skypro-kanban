@@ -1,6 +1,6 @@
 import Card from "../Card/Card.jsx";
 import { CardsInCards, ColumnTitle, MainColumn } from "./column.styled.js";
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable } from "@hello-pangea/dnd";
 
 const Column = ({ titleProps, cardList }) => {
   return (

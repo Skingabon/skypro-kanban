@@ -1,6 +1,6 @@
 import * as S from "./card.styled.js";
 import { Link } from "react-router-dom";
-import { Draggable } from "react-beautiful-dnd";
+import { Draggable } from "@hello-pangea/dnd";
 import { format } from "date-fns";
 
 const Card = ({ card, index }) => {

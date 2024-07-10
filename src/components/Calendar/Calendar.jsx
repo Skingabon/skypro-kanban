@@ -4,8 +4,6 @@ import { ru } from "date-fns/locale";
 import { format } from "date-fns";
 
 const Calendar = ({ selected, setSelected }) => {
-  // console.log(selected);
-
   const formatDate = selected
     ? format(selected, "dd.MM.yy.")
     : "Дата не выбрана";

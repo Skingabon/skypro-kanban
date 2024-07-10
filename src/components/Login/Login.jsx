@@ -45,7 +45,7 @@ const Login = () => {
         login: loginForm.email,
         password: loginForm.password,
       });
-      console.log("LOGIN RESPONSE", response);
+
       login(response.user);
     } catch (error) {
       setError(error.message);

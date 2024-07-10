@@ -39,14 +39,13 @@ export const RegistrPage = () => {
         login: regForm.email,
         password: regForm.password,
       });
-      console.log("LOGIN RESPONSE", response);
+
       const loginResp = await loginApi({
         login: regForm.email,
         password: regForm.password,
       });
       login(loginResp.user);
     } catch (error) {
-      console.error(error.message);
       if (error.message === "Failed to fetch") {
         serError("Ошибка соединения");
       }

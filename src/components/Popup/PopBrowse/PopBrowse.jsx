@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { TasksContext } from "../../../context/tasks.jsx";
 import * as S from "./popBrowse.styled.js";
 import Calendar from "../../Calendar/Calendar.jsx";
-import { deleteCard, editCard } from "../../../Api/tasks.js";
+import { deleteCard, editCard, getTasks } from "../../../Api/tasks.js";
 import { UserContext } from "../../../context/user.jsx";
 import { routes } from "../../../AppRoutes/routing.js";
 import { ErrorText } from "../../shared.styled.js";
@@ -37,10 +37,20 @@ const PopBrowse = () => {
     "Готово",
   ];
 
-  useEffect(() => {
+  const setFindCard = (cards, setCard) => {
     const findCard = cards.find((el) => el._id === id);
     setCard({ ...findCard, readonly: true, date: new Date(findCard.date) });
-  }, [id, cards]);
+  };
+
+  useEffect(() => {
+    if (!cards.length) {
+      getTasks({ token: user.token }).then((res) => {
+        setFindCard(res.tasks, setCard);
+      });
+    } else {
+      setFindCard(cards, setCard);
+    }
+  }, []);
 
   const onDescriptionChange = (e) => {
     const description = e.target.value;
