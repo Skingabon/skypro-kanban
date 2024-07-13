@@ -19,7 +19,7 @@ export const PopNewCard = styled.div`
   min-width: 375px;
   height: 100%;
   min-height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 6;
@@ -163,7 +163,6 @@ export const FormNewArea = styled.textarea`
   line-height: 1;
   letter-spacing: -0.14px;
   max-width: 370px;
-  //margin-top: 14px;
   height: 200px;
   &::placeholder {
     font-weight: 400;

@@ -39,6 +39,7 @@ const PopBrowse = () => {
 
   const setFindCard = (cards, setCard) => {
     const findCard = cards.find((el) => el._id === id);
+    console.log(findCard);
     setCard({ ...findCard, readonly: true, date: new Date(findCard.date) });
   };
 

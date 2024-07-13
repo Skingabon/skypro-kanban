@@ -14,7 +14,6 @@ const PopNewCard = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState(null);
   const [error, setError] = useState(null);
-  // const [topic, setTopic] = useState(null);
   const [task, setTask] = useState({
     title: "",
     topic: "",
@@ -23,14 +22,14 @@ const PopNewCard = () => {
   });
 
   function onAddCard() {
-    const newTask = {
-      ...task,
-      selected,
-    };
     if (!task.title || !task.description || !selected || !task.topic) {
       setError("Заполните все поля");
       return;
     }
+    const newTask = {
+      ...task,
+      date: selected,
+    };
 
     addCard({ task: newTask, token: user.token })
       .then((res) => {
@@ -43,7 +42,7 @@ const PopNewCard = () => {
   }
 
   const category = [
-    { name: "Web design", color: "_orange" },
+    { name: "Web Design", color: "_orange" },
     { name: "Research", color: "_green" },
     { name: "Copywriting", color: "_purple" },
   ];
