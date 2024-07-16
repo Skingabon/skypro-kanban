@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { PopNewCardSubttl } from "./Popup/PopNewCard/popNewCard.styled.js";
 
 export const Container = styled.div`
   max-width: 1260px;
@@ -41,15 +40,16 @@ export const SubTtl = css`
 `;
 
 export const FormInput = css`
-  margin: 20px 0;
+  margin-bottom: 20px;
 `;
 
 export const ErrorText = styled.p`
   color: red;
-  margin-top: 10px;
+  margin-top: 2px;
+  margin-bottom: 10px;
 `;
 
 export const Grey = css`
   background: #94a6be;
   color: #ffffff;
-    `;
+`;

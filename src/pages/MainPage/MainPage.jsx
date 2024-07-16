@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalStyled } from "../../global.styled.js";
 import { Loader, Wrapper } from "../../app.styled.js";
-import PopNewCard from "../../components/Popup/PopNewCard/PopNewCard.jsx";
 import Header from "../../components/Header/Header.jsx";
 import Main from "../../components/Main/Main.jsx";
 import { Outlet } from "react-router-dom";

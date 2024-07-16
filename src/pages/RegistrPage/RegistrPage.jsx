@@ -3,7 +3,7 @@ import * as S from "./registrPage.styled.js";
 import { routes } from "../../AppRoutes/routing.js";
 import { loginApi, registerApi } from "../../Api/tasks.js";
 import { UserContext } from "../../context/user.jsx";
-// на основе логина
+
 export const RegistrPage = () => {
   const { login } = useContext(UserContext);
   const [regForm, setregForm] = useState({
@@ -34,19 +34,18 @@ export const RegistrPage = () => {
       return;
     }
     try {
-      const response = await registerApi({
+      await registerApi({
         name: regForm.name,
         login: regForm.email,
         password: regForm.password,
       });
-      console.log("LOGIN RESPONSE", response);
+
       const loginResp = await loginApi({
         login: regForm.email,
         password: regForm.password,
       });
       login(loginResp.user);
     } catch (error) {
-      console.error(error.message);
       if (error.message === "Failed to fetch") {
         serError("Ошибка соединения");
       }

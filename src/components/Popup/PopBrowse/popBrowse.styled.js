@@ -1,7 +1,10 @@
 import styled, { css } from "styled-components";
 import { topicStyles } from "../../../lib/topic.js";
-import { CategorysTheme } from "../PopNewCard/popNewCard.styled.js";
-import { Grey } from "../../shared.styled.js";
+import {
+  CategorysTheme,
+  FormNewArea,
+} from "../PopNewCard/popNewCard.styled.js";
+import { Grey, Hover01, Hover03 } from "../../shared.styled.js";
 
 export const CardTopic = styled(CategorysTheme)`
   opacity: 1;
@@ -16,7 +19,7 @@ export const PopBrowse = styled.div`
   height: 100%;
   min-width: 375px;
   min-height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 7;
@@ -69,11 +72,10 @@ export const PopBrowsStatus = styled.div`
   margin-bottom: 11px;
 `;
 
-export const StatusP = styled.p`
-  /*  color: #000;*/
-  /*  font-size: 14px;*/
-  /*  font-weight: 600;*/
-  /*  line-height: 1;*/
+export const PopTitle = styled.p`
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
   margin-bottom: 14px;
 `;
 
@@ -120,4 +122,76 @@ export const PopBrowsForm = styled.form`
 export const FormBrowsBlock = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const BtnBor = css`
+  border-radius: 4px;
+  border: 0.7px solid var(--palette-navy-60, #565eef);
+  outline: none;
+  background: transparent;
+  color: #565eef;
+  a {
+    color: #565eef;
+  }
+`;
+
+export const BtnBg = css`
+  border-radius: 4px;
+  background: #565eef;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  a {
+    color: #ffffff;
+  }
+`;
+
+export const PopBrowseBtn = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  button {
+    height: 30px;
+    margin-bottom: 10px;
+    padding: 0 14px;
+  }
+`;
+
+export const PopBrowseEditGroup = styled(PopBrowseBtn)``;
+
+export const PopBrowseBtnEdit = styled.button`
+  ${BtnBor}
+  ${Hover03}
+`;
+
+export const BtnGroup = styled.div`
+  button {
+    margin-right: 8px;
+  }
+`;
+
+export const PopBrowseDelete = styled.button`
+  ${BtnBor}
+  ${Hover03}
+`;
+
+export const PopBrowseClose = styled.button`
+  ${BtnBg}
+  ${Hover01}
+`;
+
+export const PopBrowseEdit01 = styled.button`
+  ${BtnBg}
+  ${Hover01}
+`;
+
+export const PopBrowseEdit03 = styled.button`
+  ${BtnBor}
+  ${Hover03}
+`;
+
+export const FormBrowseArea = styled(FormNewArea)`
+  background-color: ${({ $readOnly }) => ($readOnly ? "#EAEEF6" : "initial")};
+  color: ${({ $readOnly }) => ($readOnly ? "#94A6BE" : "initial")};
 `;

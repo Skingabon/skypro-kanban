@@ -1,13 +1,13 @@
 import * as S from "./card.styled.js";
 import { Link } from "react-router-dom";
-import { Draggable } from "react-beautiful-dnd";
+import { Draggable } from "@hello-pangea/dnd";
 import { format } from "date-fns";
 
 const Card = ({ card, index }) => {
   const { topic, title, date, _id } = card;
 
   const colorList = {
-    "Web design": "_orange",
+    "Web Design": "_orange",
     Research: "_green",
     Copywriting: "_purple",
   };
@@ -69,7 +69,7 @@ const Card = ({ card, index }) => {
                     </clipPath>
                   </defs>
                 </svg>
-                <p>{format(date, "dd.MM.yy.")}</p>
+                <p>{format(date, "dd.MM.yy")}</p>
               </S.CardDate>
             </S.CardContent>
           </S.CardsCard>

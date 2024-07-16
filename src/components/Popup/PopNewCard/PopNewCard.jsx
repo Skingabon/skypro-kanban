@@ -12,9 +12,8 @@ const PopNewCard = () => {
   const { user } = useContext(UserContext);
   const { setCards } = useContext(TasksContext);
   const navigate = useNavigate();
-  const [selected, setSelected] = useState(new Date());
+  const [selected, setSelected] = useState(null);
   const [error, setError] = useState(null);
-  // const [topic, setTopic] = useState(null);
   const [task, setTask] = useState({
     title: "",
     topic: "",
@@ -23,20 +22,19 @@ const PopNewCard = () => {
   });
 
   function onAddCard() {
-    const newTask = {
-      ...task,
-      selected,
-    };
     if (!task.title || !task.description || !selected || !task.topic) {
       setError("Заполните все поля");
       return;
     }
+    const newTask = {
+      ...task,
+      date: selected,
+    };
 
     addCard({ task: newTask, token: user.token })
       .then((res) => {
         setCards(res.tasks);
         navigate(routes.MAIN);
-        console.log(res.tasks);
       })
       .catch(() => {
         setError("Что-то пошло не так, попробуйте позже");
@@ -44,7 +42,7 @@ const PopNewCard = () => {
   }
 
   const category = [
-    { name: "Web design", color: "_orange" },
+    { name: "Web Design", color: "_orange" },
     { name: "Research", color: "_green" },
     { name: "Copywriting", color: "_purple" },
   ];
@@ -54,7 +52,7 @@ const PopNewCard = () => {
       <S.PopNewCardContainer>
         <S.PopNewCardBlock>
           <S.PopNewCardContent>
-            <h3 className="pop-new-card__ttl">Создание задачи</h3>
+            <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
             <S.CloseCard to={routes.MAIN}>&#10006;</S.CloseCard>
             <S.PopNewCardWrap>
               <S.PopNewCardForm id="formNewCard" action="#">
@@ -77,15 +75,12 @@ const PopNewCard = () => {
                   <S.PopNewCardSubttl htmlFor="textArea">
                     Описание задачи
                   </S.PopNewCardSubttl>
-                  <textarea
-                    className="form-new__area"
-                    name="text"
-                    id="textArea"
+                  <S.FormNewArea
                     placeholder="Введите описание задачи..."
                     onChange={(e) =>
                       setTask({ ...task, description: e.target.value })
                     }
-                  ></textarea>
+                  ></S.FormNewArea>
                 </S.FormNewBlock>
               </S.PopNewCardForm>
               <Calendar selected={selected} setSelected={setSelected} />
