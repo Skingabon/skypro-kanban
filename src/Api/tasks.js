@@ -1,4 +1,5 @@
 const url = "https://wedev-api.sky.pro/api";
+
 export function getTasks({ token }) {
   const response = fetch(url + "/kanban", {
     headers: {
@@ -96,6 +97,29 @@ export function editCard({ token, task }) {
     }
     if (response.status === 401) {
       throw new Error("Неверный токен");
+    }
+    return response.json();
+  });
+}
+
+export function deleteCard({ token, taskId }) {
+  return fetch(url + `/kanban/${taskId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    if (response.status === 400) {
+      throw new Error("Неверный запрос");
+    }
+    if (response.status === 401) {
+      throw new Error("Неверный токен");
+    }
+    if (response.status === 500) {
+      throw new Error("Ошибка сервера");
     }
     return response.json();
   });
